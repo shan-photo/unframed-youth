@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✦ 青春框景 ✦ UNFRAMED YOUTH EXHIBITION</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F5F0E8;--cream-dark:#E8E0D0;--paper:#FDFAF5;
+  --ink:#1A1714;--ink-mid:#4A443E;--ink-light:#8C837A;--ink-faint:#C2BAB2;
+  --amber:#B87740;--amber-light:#D9A870;--amber-pale:#F2E4CC;
+  --dark:#211C15;
+  --serif:'EB Garamond','Noto Serif TC',serif;
+  --sans:'Noto Sans TC',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;overflow-x:hidden;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;opacity:0.6;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 3rem;background:rgba(245,240,232,0.9);backdrop-filter:blur(14px);border-bottom:0.5px solid rgba(184,119,64,0.15);}
+.nav-brand{font-family:var(–serif);font-size:0.9rem;letter-spacing:0.1em;color:var(–ink-mid);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{font-size:0.7rem;letter-spacing:0.2em;color:var(–ink-light);text-decoration:none;text-transform:uppercase;transition:color 0.3s;}
+.nav-links a:hover{color:var(–amber);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:7rem 2rem 5rem;position:relative;overflow:hidden;}
+.hero-border{position:absolute;inset:2rem;border:0.5px solid rgba(184,119,64,0.2);pointer-events:none;}
+.hc{position:absolute;width:20px;height:20px;border-color:rgba(184,119,64,0.45);border-style:solid;}
+.hc.tl{top:2rem;left:2rem;border-width:1px 0 0 1px;}
+.hc.tr{top:2rem;right:2rem;border-width:1px 1px 0 0;}
+.hc.bl{bottom:2rem;left:2rem;border-width:0 0 1px 1px;}
+.hc.br{bottom:2rem;right:2rem;border-width:0 1px 1px 0;}
+.hero-label{font-size:0.65rem;letter-spacing:0.38em;color:var(–amber);text-transform:uppercase;margin-bottom:2.8rem;opacity:0;animation:fadeUp 1s ease 0.2s forwards;}
+.hero-title{font-family:var(–serif);font-size:clamp(4rem,11vw,9rem);font-weight:400;line-height:0.92;letter-spacing:-0.025em;opacity:0;animation:fadeUp 1s ease 0.4s forwards;}
+.hero-title em{font-style:italic;color:var(–amber);}
+.hero-en{display:block;font-family:var(–serif);font-style:normal;font-size:clamp(0.62rem,1.1vw,0.82rem);letter-spacing:0.5em;color:var(–ink-light);margin-top:1.2rem;}
+.hero-tagline{font-family:var(–serif);font-style:italic;font-size:clamp(0.88rem,1.6vw,1.15rem);color:var(–ink-mid);max-width:460px;line-height:2;margin:2.5rem 0 3.5rem;opacity:0;animation:fadeUp 1s ease 0.7s forwards;}
+.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 1s ease 0.9s forwards;}
+.btn-dark{padding:0.75rem 2rem;background:var(–ink);color:var(–cream);font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background 0.3s;}
+.btn-dark:hover{background:var(–amber);}
+.btn-outline{padding:0.75rem 2rem;background:transparent;color:var(–ink-mid);font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;border:0.5px solid var(–ink-faint);cursor:pointer;transition:all 0.3s;}
+.btn-outline:hover{border-color:var(–amber);color:var(–amber);}
+.scroll-cue{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.4rem;opacity:0;animation:fadeUp 1s ease 1.2s forwards;}
+.scroll-cue span{font-size:0.58rem;letter-spacing:0.25em;color:var(–ink-faint);text-transform:uppercase;}
+.scroll-line{width:0.5px;height:36px;background:linear-gradient(to bottom,var(–ink-faint),transparent);animation:pulse 2s ease-in-out infinite;}
+
+/* ABOUT */
+.about-section{background:var(–paper);padding:8rem 3rem;}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:center;}
+.section-tag{font-size:0.62rem;letter-spacing:0.35em;color:var(–amber);text-transform:uppercase;margin-bottom:1rem;}
+.section-h{font-family:var(–serif);font-size:clamp(1.8rem,3.5vw,3rem);font-weight:400;line-height:1.2;margin-bottom:1.5rem;}
+.rule{width:36px;height:0.5px;background:var(–amber);margin:1.8rem 0;}
+.about-text p{font-size:0.9rem;line-height:2.1;color:var(–ink-mid);margin-bottom:1rem;}
+.film{background:var(–dark);padding:1.8rem;display:grid;grid-template-columns:1fr 1fr;gap:6px;position:relative;}
+.film::before{content:’’;position:absolute;left:0;top:0;bottom:0;width:1.8rem;background:repeating-linear-gradient(to bottom,transparent 0,transparent 7px,rgba(255,255,255,0.12) 7px,rgba(255,255,255,0.12) 13px);}
+.film-cell{aspect-ratio:4/5;background:var(–cream-dark);display:flex;align-items:center;justify-content:center;font-family:var(–serif);font-style:italic;font-size:0.75rem;color:var(–ink-light);text-align:center;padding:0.8rem;}
+.film-note{font-size:0.63rem;letter-spacing:0.15em;color:var(–ink-faint);margin-top:0.9rem;text-align:right;text-transform:uppercase;}
+
+/* QUOTE BAND */
+.quote-band{background:var(–dark);padding:6rem 3rem;text-align:center;}
+.quote-band blockquote{font-family:var(–serif);font-style:italic;font-size:clamp(1.2rem,2.6vw,1.9rem);color:var(–amber-light);max-width:660px;margin:0 auto;line-height:2;}
+.quote-band cite{display:block;font-family:var(–sans);font-style:normal;font-size:0.63rem;letter-spacing:0.25em;color:rgba(217,168,112,0.4);margin-top:1.8rem;text-transform:uppercase;}
+
+/* PARTICIPANTS */
+.participants-section{padding:8rem 3rem;background:var(–cream);}
+.region-block{max-width:1400px;margin:0 auto 6rem;}
+.region-label{display:flex;align-items:center;gap:1.5rem;margin-bottom:2.5rem;}
+.region-tag{font-size:0.62rem;letter-spacing:0.35em;color:var(–amber);text-transform:uppercase;}
+.region-line{flex:1;height:0.5px;background:var(–cream-dark);}
+.region-city{font-size:0.6rem;letter-spacing:0.2em;color:var(–ink-faint);text-transform:uppercase;}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(–cream-dark);}
+.grid-3{grid-template-columns:repeat(3,1fr);}
+.grid-2{grid-template-columns:repeat(2,1fr);}
+.grid-1{grid-template-columns:1fr;}
+
+/* CARD */
+.card{background:var(–paper);padding:2rem 1.8rem;cursor:pointer;transition:background 0.35s;position:relative;overflow:hidden;}
+.card::before{content:’’;position:absolute;left:0;top:0;width:2px;height:0;background:var(–amber);transition:height 0.45s ease;}
+.card:hover{background:var(–amber-pale);}
+.card:hover::before{height:100%;}
+.card-num{font-family:var(–serif);font-size:0.66rem;color:var(–ink-faint);letter-spacing:0.15em;margin-bottom:1.4rem;display:block;}
+.card-av{width:46px;height:46px;border-radius:50%;background:var(–amber-pale);border:0.5px solid var(–amber-light);display:flex;align-items:center;justify-content:center;font-family:var(–serif);font-size:0.95rem;color:var(–amber);margin-bottom:1rem;}
+.card-name{font-family:var(–serif);font-size:1.08rem;font-weight:400;color:var(–ink);margin-bottom:0.2rem;}
+.card-meta{font-size:0.68rem;color:var(–ink-light);margin-bottom:0.5rem;letter-spacing:0.05em;}
+.card-loc{font-size:0.64rem;color:var(–ink-faint);margin-bottom:0.9rem;letter-spacing:0.08em;}
+.card-slogan{font-family:var(–serif);font-style:italic;font-size:0.82rem;line-height:1.8;color:var(–ink-mid);}
+.card-read{display:inline-flex;align-items:center;gap:0.4rem;margin-top:1rem;font-size:0.63rem;letter-spacing:0.2em;text-transform:uppercase;color:var(–amber);opacity:0;transition:opacity 0.3s;}
+.card:hover .card-read{opacity:1;}
+
+/* MODAL */
+.overlay{position:fixed;inset:0;background:rgba(26,23,20,0.8);z-index:200;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.4s;backdrop-filter:blur(5px);}
+.overlay.on{opacity:1;pointer-events:all;}
+.modal{background:var(–paper);width:100%;max-width:760px;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(16px);transition:transform 0.4s;}
+.overlay.on .modal{transform:translateY(0);}
+
+.mhead{padding:2.5rem 2.8rem 1.8rem;border-bottom:0.5px solid var(–cream-dark);position:sticky;top:0;background:var(–paper);z-index:1;}
+.mclose{position:absolute;top:1.3rem;right:1.3rem;background:none;border:0.5px solid var(–ink-faint);width:30px;height:30px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:var(–ink-light);transition:all 0.3s;}
+.mclose:hover{border-color:var(–amber);color:var(–amber);}
+.mnum{font-size:0.6rem;letter-spacing:0.3em;color:var(–amber);text-transform:uppercase;margin-bottom:0.4rem;}
+.mname{font-family:var(–serif);font-size:1.8rem;font-weight:400;margin-bottom:0.3rem;}
+.mbio{font-size:0.76rem;color:var(–ink-light);letter-spacing:0.04em;margin-bottom:0.8rem;}
+.mslogan{font-family:var(–serif);font-style:italic;font-size:1rem;color:var(–amber);line-height:1.8;}
+
+.mbody{padding:2.2rem 2.8rem 3rem;}
+.mintro{font-family:var(–serif);font-style:italic;font-size:0.92rem;color:var(–ink-mid);line-height:2;margin-bottom:2rem;padding-left:1.3rem;border-left:2px solid var(–amber-light);}
+.mtag{font-size:0.6rem;letter-spacing:0.28em;color:var(–ink-faint);text-transform:uppercase;margin-bottom:1.5rem;}
+.qa{margin-bottom:1.8rem;}
+.qq{font-family:var(–serif);font-style:italic;font-size:0.84rem;color:var(–amber);margin-bottom:0.45rem;line-height:1.7;}
+.qa-a{font-size:0.84rem;line-height:2.1;color:var(–ink-mid);padding-left:1rem;border-left:1px solid var(–cream-dark);}
+
+/* FOOTER */
+footer{background:var(–ink);color:var(–ink-faint);padding:5rem 3rem 3rem;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:3rem;}
+.flogo{font-family:var(–serif);font-size:1.4rem;color:var(–cream);margin-bottom:0.7rem;}
+.ftag{font-size:0.73rem;line-height:1.9;color:rgba(194,186,178,0.5);}
+.fsec h4{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(–amber);margin-bottom:1.1rem;}
+.fsec p,.fsec a{font-size:0.76rem;line-height:2;color:rgba(194,186,178,0.5);text-decoration:none;display:block;}
+.fbot{grid-column:1/-1;padding-top:2rem;border-top:0.5px solid rgba(194,186,178,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.fbot span{font-size:0.66rem;color:rgba(194,186,178,0.28);letter-spacing:0.08em;}
+
+/* ANIM */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulse{0%,100%{opacity:0.3;}50%{opacity:0.75;}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal.vis{opacity:1;transform:translateY(0);}
+
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(–cream);}
+::-webkit-scrollbar-thumb{background:var(–amber-light);}
+
+@media(max-width:960px){
+nav{padding:1rem 1.5rem;}
+.about-inner{grid-template-columns:1fr;gap:3rem;}
+.grid,.grid-3{grid-template-columns:repeat(2,1fr);}
+footer{grid-template-columns:1fr;gap:2rem;}
+.fbot{flex-direction:column;text-align:center;}
+}
+@media(max-width:580px){
+.nav-links{display:none;}
+.grid,.grid-3,.grid-2{grid-template-columns:1fr;}
+.mhead,.mbody{padding:1.6rem 1.4rem;}
+.participants-section{padding:5rem 1.5rem;}
+}
+</style>
+
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">✦ 青春框景</div>
+  <ul class="nav-links">
+    <li><a href="#about">關於展覽</a></li>
+    <li><a href="#taiwan">台灣</a></li>
+    <li><a href="#cross">跨境</a></li>
+    <li><a href="#japan">日本</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-border"></div>
+  <div class="hc tl"></div><div class="hc tr"></div>
+  <div class="hc bl"></div><div class="hc br"></div>
+  <p class="hero-label">2025–2026 · 攝影展覽計畫</p>
+  <h1 class="hero-title">
+    青春<em>框</em>景
+    <span class="hero-en">UNFRAMED YOUTH EXHIBITION</span>
+  </h1>
+  <p class="hero-tagline">「關於青春、流動與不安的顯影練習。」</p>
+  <div class="hero-cta">
+    <a href="#taiwan" class="btn-dark">認識十二個房間</a>
+    <a href="#about" class="btn-outline">關於展覽</a>
+  </div>
+  <div class="scroll-cue">
+    <span>向下捲動</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<section id="about" class="about-section">
+  <div class="about-inner">
+    <div class="reveal">
+      <p class="section-tag">關於展覽</p>
+      <h2 class="section-h">青春，<br>是一種<em style="font-family:var(--serif);color:var(--amber);">仍未對焦</em>的狀態</h2>
+      <div class="rule"></div>
+      <div class="about-text">
+        <p>這個計畫橫跨台灣與日本，訪問了十二位二十世代的普通人，走進他們的房間，在最私人的空間裡，讓他們說說關於青春、流動、以及那些說不清楚的不安。</p>
+        <p>「顯影練習」借用暗房的語言：那些潛伏在光之外的東西，需要時間、溫度，才能慢慢浮現輪廓。每一個房間，都是一格底片。</p>
+        <p>本網站保存了每位受訪者的完整訪談逐字稿，讓觀展後的你，可以繼續坐下來，再聽他們說一次。</p>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:0.2s">
+      <div class="film">
+        <div class="film-cell">台北<br>永和<br>台南</div>
+        <div class="film-cell">札幌<br>東京<br>北海道</div>
+        <div class="film-cell">二十世代<br>的<br>房間</div>
+        <div class="film-cell">顯影<br>練習</div>
+      </div>
+      <p class="film-note">Taiwan × Japan · 十二格底片</p>
+    </div>
+  </div>
+</section>
+
+<div class="quote-band">
+  <blockquote>「青春不是一段時光，而是一種仍未決定去向的狀態。」</blockquote>
+  <cite>— 展覽序言</cite>
+</div>
+
+<!-- ── 台灣 ── -->
+
+<section id="taiwan" class="participants-section">
+
+  <!-- 台北 -->
+
+  <div class="region-block reveal">
+    <div class="region-label">
+      <span class="region-tag">台灣</span>
+      <div class="region-line"></div>
+      <span class="region-city">Taipei · 台北</span>
+    </div>
+    <div class="grid grid-3" id="taipei-grid"></div>
+  </div>
+
+  <!-- 桃園 -->
+
+  <div class="region-block reveal" style="transition-delay:0.1s">
+    <div class="region-label">
+      <span class="region-tag">台灣</span>
+      <div class="region-line"></div>
+      <span class="region-city">Taoyuan · 桃園</span>
+    </div>
+    <div class="grid grid-1" id="taoyuan-grid"></div>
+  </div>
+
+  <!-- 台南 -->
+
+  <div class="region-block reveal" style="transition-delay:0.2s">
+    <div class="region-label">
+      <span class="region-tag">台灣</span>
+      <div class="region-line"></div>
+      <span class="region-city">Tainan · 台南</span>
+    </div>
+    <div class="grid grid-2" id="tainan-grid"></div>
+  </div>
+
+</section>
+
+<!-- ── 跨境 ── -->
+
+<section id="cross" style="padding:0 3rem 8rem;background:var(--cream);">
+  <div class="region-block reveal" style="max-width:1400px;margin:0 auto;">
+    <div class="region-label">
+      <span class="region-tag">跨境</span>
+      <div class="region-line"></div>
+      <span class="region-city">Taipei, Taiwan ↔ Tokushima, Japan</span>
+    </div>
+    <div class="grid grid-1" id="cross-grid"></div>
+  </div>
+</section>
+
+<!-- ── 日本 ── -->
+
+<section id="japan" style="padding:0 3rem 8rem;background:var(--cream);">
+
+  <!-- 札幌 -->
+
+  <div class="region-block reveal" style="max-width:1400px;margin:0 auto 6rem;">
+    <div class="region-label">
+      <span class="region-tag">日本</span>
+      <div class="region-line"></div>
+      <span class="region-city">Sapporo · 札幌</span>
+    </div>
+    <div class="grid grid-3" id="sapporo-grid"></div>
+  </div>
+
+  <!-- 東京 -->
+
+  <div class="region-block reveal" style="max-width:1400px;margin:0 auto;transition-delay:0.1s">
+    <div class="region-label">
+      <span class="region-tag">日本</span>
+      <div class="region-line"></div>
+      <span class="region-city">Tokyo · 東京</span>
+    </div>
+    <div class="grid grid-2" id="tokyo-grid"></div>
+  </div>
+
+</section>
+
+<footer>
+  <div>
+    <p class="flogo">✦ 青春框景</p>
+    <p class="ftag">UNFRAMED YOUTH EXHIBITION<br>關於青春、流動與不安的顯影練習。<br>Taiwan × Japan · 2025–2026</p>
+  </div>
+  <div class="fsec">
+    <h4>展覽資訊</h4>
+    <p>台北・北投 中心新村</p>
+    <p>2026 年 3 月底</p>
+    <p>台南・透南風咖啡 <small>（後續場次）</small></p>
+    <p>入場免費</p>
+  </div>
+  <div class="fsec">
+    <h4>關於計畫</h4>
+    <p>訪談者：珊（Wu Peishan）</p>
+    <p>本網站為展覽延伸計畫</p>
+    <p>保存十二位受訪者逐字稿</p>
+  </div>
+  <div class="fbot">
+    <span>© 2026 青春框景 UNFRAMED YOUTH EXHIBITION · 版權所有</span>
+    <span>攝影展覽 · 逐字稿典藏</span>
+  </div>
+</footer>
+
+<!-- MODAL -->
+
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal">
+    <div class="mhead">
+      <button class="mclose" id="mclose">✕</button>
+      <p class="mnum" id="mnum"></p>
+      <h2 class="mname" id="mname"></h2>
+      <p class="mbio" id="mbio"></p>
+      <p class="mslogan" id="mslogan"></p>
+    </div>
+    <div class="mbody">
+      <p class="mintro" id="mintro"></p>
+      <p class="mtag">訪談逐字稿節錄</p>
+      <div id="mtranscript"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const people = {
+
+  taipei: [
+    {
+      id:'001', name:'郁雯', loc:'Taiwan · Taipei', age:'29歲', job:'非營利組織工作者', initial:'郁',
+      slogan:'「在這個房間裡，我才不用假裝自己沒事。」',
+      intro:'在外人眼中發光的社會工作者，內心卻有很多無法對人言的煩惱。在家人期待與自我渴望間拉扯，試圖從過勞邊緣奪回屬於自己的平靜空間。',
+      qa:[
+        {q:'你在找房間的時候最在意什麼？',a:'通風跟採光。我在台北住過很多地方，發現一個房間如果曬不到太陽，我的心情就會慢慢變得很沉。後來我發現這不只是物理問題，是心理問題。'},
+        {q:'房間對你來說扮演什麼角色？',a:'是一個不需要表演的地方。在外面工作的時候，我要處理很多人的情緒，要很穩、很有力量。但關上門之後，我才可以是一個不確定自己在幹嘛的人。'},
+        {q:'你現在的工作讓你快樂嗎？',a:'很難說快樂或不快樂。它是我覺得有意義的工作，但同時它也在消耗我。我一直在想，這兩件事能不能同時存在，還是我必須選一個。'},
+        {q:'台北讓你想到什麼顏色？',a:'灰橘色。我住在五樓，頂樓完全沒有加蓋，望出去是山。傍晚的時候台北就是一個灰灰橘橘的顏色，那是我對這個城市最有感情的時刻。'},
+        {q:'你的生活現在是什麼顏色？',a:'應該是中壢的那種迷彩色，融合很多顏色的那種。因為我成長的地方是中壢，它很多元，火車站附近像是置身東南亞，有很多不同的語言和食物。我的生活也是這樣，很多東西混在一起，說不清楚。'},
+        {q:'你獨處的時候最強烈的感受是什麼？',a:'可以放空的安心，還有一種想要整理自己的衝動。我不太喜歡讓房間太亂，因為我發現整理房間對我來說也是在整理心情。'},
+        {q:'有感受到社會對你這個年紀的期待嗎？',a:'有。特別是看到跟你同班的人，因為選了理工科然後進了科技公司，薪水就差很多。他在煩惱要買新成屋還是預售屋，我在煩惱台北房租補不補得起來。那個差距讓我有時候會懷疑自己的選擇。'},
+        {q:'家裡的期待是什麼？',a:'比較是隱晦的經濟期待。家裡要換冷氣的時候，會等我說要不要贊助。結帳的時候慢慢地不會主動掏錢包。這些小事情積累起來，變成我對自己也有期待——要讓自己有能力支援家裡。'},
+        {q:'結婚這件事對你來說有壓力嗎？',a:'有，而且這個壓力是自己給自己的。身邊的朋友開始一個一個步入婚姻，你就會開始想：這件事對我來說是什麼？我是不是也應該開始朝這個方向努力？加上社會對女生的年紀還是有一些隱形的壓力在。'},
+        {q:'支撐你繼續往前的是什麼？',a:'是那些被我服務的小孩。我蹲下來跟他們說話的畫面，是我腦袋裡最清晰的生活場景。那個畫面會讓我知道，我現在做的事情是值得的。'}
+      ]
+    },
+    {
+      id:'002', name:'承賢', loc:'Taiwan · Taipei', age:'29歲', job:'接案工作者', initial:'賢',
+      slogan:'「沒有窗戶，我不知道我在幹嘛。」',
+      intro:'剛結束海外漂泊回國，正處於歸零重啟的階段。他默默抗拒著社會對30歲男性的既定想像。對他而言，房間什麼都不用有，只有窗戶是必要——有窗戶才能確認時間與自己的存在。',
+      qa:[
+        {q:'台北對你來說是什麼顏色？',a:'灰藍色。因為這裡的天空有時藍藍的，但總感覺帶點灰灰的色調。'},
+        {q:'你現在的生活是什麼顏色？',a:'米色。因為我搬來這裡才兩個禮拜，一切像是重新開始，但又不是純白色的那種全然空白，而是已經加入了一些元素，在白布上有一點點細微的東西。'},
+        {q:'回台灣之後，你最喜歡現在房間的什麼？',a:'窗戶很大，起床就能看到天空。我從十幾歲就知道自己喜歡有窗戶的房間，沒窗戶住起來真的不知道在幹嘛。'},
+        {q:'在家裡的你和在外面的你有什麼差別？',a:'在家裡比較慵懶，不太思考。但在外面會開啟戰鬥模式。我沒辦法在床旁邊工作，只要有床我就想躺下。出門對我來說，就是去跟這個世界接觸。'},
+        {q:'你最喜歡的聲音是什麼？',a:'煮飯的聲音。煮飯的時候感覺比較放鬆、有在生活的感覺。以前跟父母住時怕吵到他們，現在自己住，就可以完全掌控想聽什麼。'},
+        {q:'你想成為什麼樣的人？',a:'一個可以做自己決定的人。只需要為自己的決定負責，不需要為太多人負責。'},
+        {q:'台灣對你這個年紀的青年友善嗎？',a:'說實話，不算太友善。去過國外後，覺得國外給的自由與選擇空間更多。台灣社會對於既定生活想像的框架很深，會有一股力量想把你往那個方向推。'},
+        {q:'出門前和進門後你會做什麼？',a:'出門前一定確認手機、鑰匙、錢包。進門的第一件事是放包包、脫襪子，然後換上短褲。我很熱愛穿短褲，在愛爾蘭冷到瘋掉，我也還是想穿。'},
+        {q:'在愛爾蘭那一年帶給你什麼？',a:'讓我知道我可以歸零。原本以為離開台灣是逃，但後來發現那段時間讓我更清楚自己要什麼，或者說更清楚自己不要什麼。'},
+        {q:'現在最困難的是什麼？',a:'思考人生下一步要幹嘛，還有處理目前的經濟平衡。簡單說就是需要賺點錢。但比起之前，我現在比較能笑著說這件事了。'}
+      ]
+    },
+    {
+      id:'003', name:'品瑄', loc:'Taiwan · Taipei', age:'29歲', job:'基金會員工', initial:'品',
+      slogan:'「整理房間的時候，我也在整理我自己。」',
+      intro:'住在交通擁擠永和的她在基金會從事陪伴孩童認識情緒的工作。她持續練習如何經營下班後的時間，慢慢將租屋處當成家一樣的經營，打造充滿植物、漂亮選品與平靜的空間。',
+      qa:[
+        {q:'你房間裡的獨角獸對你有什麼意義？',a:'是在找自己定位的時候喜歡上的。那時候覺得獨角獸很獨特，又是一個純淨的象徵。那剛好也是我剛上台北，想找到自己是什麼人的階段。'},
+        {q:'你是什麼時候開始認真「經營」自己的家的？',a:'大概是去年開始。以前剛來台北的時候，覺得只要能睡覺就好。但慢慢地開始相信，家是心靈的領域。所以當我在佈置或整理的時候，對我來說也很像是在整理心靈的過程。'},
+        {q:'你在房間裡最喜歡的聲音是什麼？',a:'早上限定的鳥叫聲。還有那個冷氣機的聲音，一開始覺得很惱人，但後來習慣了，覺得它是我在這裡生活的一個記憶點。'},
+        {q:'你最在意買食物的什麼？',a:'現在最在意的是營養均衡跟蛋白質。因為今年開始比較認真在飲控，所以不管是自己煮或是去買，都盡量選調味比較簡單、健康的。'},
+        {q:'你覺得台北讓你想到什麼？',a:'福和橋那邊，機車一堆的擁擠畫面。那是我每天騎車的路，是台北對我最真實的樣子。'},
+        {q:'你手作的東西是你在找什麼嗎？',a:'我覺得是找專注感。當我對某件事很投入的時候，我就會發狂地研究，買很多材料，然後做很多東西。那段時間是我最不想煩惱其他事情的時候。'},
+        {q:'台南跟台北對你來說是什麼關係？',a:'台南是我放鬆但容易停滯的地方。人在台南就會覺得反正什麼都不做也活得下去。台北有我的基地跟效率，但台南有我的家人跟另一種生活的可能。'},
+        {q:'有感受到社會對你年紀的壓力嗎？',a:'有，特別是結婚這件事。身邊的朋友開始一個一個步入婚姻，你就會開始有點焦慮，想知道這件事對自己來說是什麼。加上社會對女生年紀還是有一些隱形的壓力。'},
+        {q:'工作讓你快樂嗎？',a:'是我真心覺得有價值的工作。我很喜歡與人一對一的第一線接觸，那個東西對我很重要。即使有時候很累，那個蹲下來跟小孩說話的畫面，是讓我繼續做下去的原因。'},
+        {q:'你今年最想做的一件事是什麼？',a:'體驗數位遊牧。我想要在不同的地方工作和生活，看看在不同的空間裡，我會是什麼樣的人。'}
+      ]
+    }
+  ],
+
+  taoyuan: [
+    {
+      id:'004', name:'藝心', loc:'Taiwan · Taoyuan', age:'28歲', job:'公營事業上班族', initial:'藝',
+      slogan:'「小花的飲水機聲音剛剛好，代表一切都是OK的。」',
+      intro:'從高雄北漂至桃園，滿溢異鄉人的疏離感。面對經濟壓力，她將情感依賴於貓咪小花，貓咪與房間是她對抗外部世界的堡壘。',
+      qa:[
+        {q:'桃園對你來說是什麼顏色？',a:'灰色。因為我本來在高雄、南部生活，上來之後覺得這裡比較沒那麼常遇到會主動互動的人，加上天氣的關係，常常讓我覺得在桃園的心情灰灰的。'},
+        {q:'台灣呢？',a:'台灣是黃色。因為我覺得目前在台灣遇到的人事物大多是好的、蠻溫暖的，人也都很有愛，給我的感覺是這個國家是有溫度的。'},
+        {q:'你最喜歡房間裡的哪個聲音？',a:'小花飲水機的水流聲。如果太大聲代表要補水，現在這樣剛好，就會覺得現在一切狀態都是很OK的，這聲音讓我很安心。'},
+        {q:'假日你通常都做什麼？',a:'有八成的時間都喜歡待在家裡。畫畫、彈吉他，或是窩在沙發上追劇、放空。如果天氣真的很好，可能會去附近的市集或逛夜市。'},
+        {q:'在外面的你和在房間裡的你，有什麼差別？',a:'走出去通常是為了工作，所以會覺得要帶上腦袋，講話要經過思考再輸出，情緒起伏也不會太大。但在家裡就可以很軟爛，東西想怎麼丟就怎麼丟，想哭的時候也可以在房間裡看劇哭出來。'},
+        {q:'你覺得台灣對青年友善嗎？',a:'我覺得很不友善。長輩常說「我像你這年紀已經買房成家了」，但現在房子那麼貴，完全負擔不起。在外租屋的租金佔薪水比例也很高，覺得生存已經不容易了，更別說生活，太難了。'},
+        {q:'有感受到什麼讓你覺得被「困住」了嗎？',a:'還沒辦法調到自己想要的城市。我很想回高雄工作，但被困在桃園了。這也是一種心靈上的不自由，想見家人的時候卻要花高鐵票錢才看得到。'},
+        {q:'五年後你希望生活是什麼樣子？',a:'我希望我有能力買一戶房子給我爸住，因為目前我們都是租屋。如果那時候我結婚了，希望能和男朋友一起住在高雄，並且再養一隻貓給小花作伴。'},
+        {q:'你當初為什麼決定收養小花？',a:'牠原本是前公司門口的流浪貓，生了一窩小貓。牠把寶寶照顧得很好，自己瘦不拉嘰的，還會去挖垃圾桶找便當廚餘吃。後來小貓都被送養了，大家只想養小寶寶，沒人想養媽媽。我覺得小花是一個很棒的媽媽，值得一個好的環境。'},
+        {q:'最難的時候，什麼東西可以支撐你？',a:'小花。我覺得牠就是在滋養我的靈魂。心情不好又不想對人輸出負面情緒時，抱抱小花就會好很多。'}
+      ]
+    }
+  ],
+
+  tainan: [
+    {
+      id:'005', name:'庭耘＆俊凱', loc:'Taiwan · Tainan', age:'28歲', job:'獨立書店經營者', initial:'書',
+      slogan:'「來台南之後，我們反而變很少買衣服了。」',
+      intro:'返鄉創業的情侶。兩年前逃離台北令人窒息的容貌焦慮與社會展演，在台南重新捏塑生活的形狀。養著一隻叫做旺來的貓。',
+      qa:[
+        {q:'來台南之後，生活最大的改變是什麼？',a:'（俊凱）來台南之後反而變很少買衣服。（庭耘）這是沒有容貌焦慮啦。以前在台北的時候我們是「帥潮」耶。'},
+        {q:'你們在買食物的時候最在意什麼？',a:'（庭耘）如果是盤商跟小農之間，我可能會選跟小農買。加上工作關係認識很多小農朋友，所以就會傾向跟他們買自己做、自己種的東西。至少吃的時候知道這個食物是誰生產的，會比較有感恩的心。'},
+        {q:'你們最期待幾個人吃飯？',a:'（庭耘）最多四個。（俊凱）再往上就是耗能。大家都是愛書人，其實都很內向。'},
+        {q:'你們通常幾個人吃飯？',a:'（庭耘）如果是家裡的話還是兩個人。也蠻常跟朋友一起吃，下班之後。可能四個人，跟比較好的客人朋友，揪一揪就一起吃。'},
+        {q:'出門前和進門後有什麼儀式？',a:'（俊凱）穿衣服吧，穿外出服。在家裡是不會穿衣服的嗎？（笑）（庭耘）我回家一定會做的事情是洗手，進到家裡要乾淨一點的感覺。然後我很怕手髒髒的摸貓，因為牠會舔自己。'},
+        {q:'書店讓你們的生活有什麼不同？',a:'（俊凱）認識了很多攤友，你會看到生產者現身，就比較直接地獲取到這些價值，知道為什麼要買這些東西。開始會愛買有機農產品，跟各種有趣的食材。'},
+        {q:'台灣對青年創業者友善嗎？',a:'（庭耘）我覺得台灣對青年是蠻友善的，包容度很高，尤其在藝文產業這塊可以看到很多青年非常活躍。比起日本那種一定要進入大企業上班的社會期待，台灣的流動性比較大，大家可以比較安心地做自己。'},
+        {q:'你們進咖啡廳或書店的感受有什麼不同？',a:'（俊凱）真的好吃的店，反而台南厲害的店就是它既好吃、又不讓你排太長。因為它速度很快、動作很快，又可以有一定品質。其實好吃的店反而不太算要排隊，但人很多。'},
+        {q:'20年後你們希望生活是什麼樣子？',a:'（庭耘）住在一個非都市的地方。那種一切都慢下來、不用趕時間的節奏。在那樣的環境下發呆、閱讀、深呼吸，就是我理想中50歲的樣子。'},
+        {q:'你們對彼此房間的看法是什麼？',a:'（俊凱）我喜歡亮亮的，所以進門就開燈。（庭耘）然後我就會把所有的燈關掉，因為我喜歡暗暗的。而且我們家的燈很醜，我就很討厭那個燈。'}
+      ]
+    },
+    {
+      id:'006', name:'晴華', loc:'Taiwan · Tainan', age:'28歲', job:'活動企劃執行', initial:'華',
+      slogan:'「吃重複卻喜歡的食物，就是在過日子了。」',
+      intro:'在隨處可見吹噓著百萬年薪、同儕急於長成大人模樣的焦慮時代，對她而言，把日子過得輕盈而開心，才是人生的正經事。',
+      qa:[
+        {q:'28歲這個年紀，你有感受到社會壓力嗎？',a:'出社會後雖然會覺得好像要有一個「大人的樣子」，但我身邊很多朋友或前輩都還是以舒服的狀態生活，所以我覺得不需要太勉強自己去迎合某種形象。雖然偶爾在Dcard會看到有人說幾歲就月入百萬，但我通常覺得那是誇大的。'},
+        {q:'你的飲食習慣是什麼？',a:'我有一個習慣是喜歡在一段時間內重複吃同樣的東西，比如這整週的中餐都吃同一款。因為我覺得決定要吃什麼很累，如果吃到一個不錯的，我就會一直吃，吃到真的不行了才停下來。這種穩定感可以讓我不用思考太多。'},
+        {q:'你的生活有什麼固定的儀式感？',a:'出門前一定會把水瓶裝滿水，因為我很容易渴，而且我不太喝手搖飲。回到家則有固定的順序：脫鞋、掛鑰匙、脫外套、放下包包。因為背電腦出門，進門後一定會把電腦放回桌上。'},
+        {q:'你喜歡Coji-Coji的什麼地方？',a:'它的哲理很酷——老師罵他不好好讀書，他回答「可吉可吉就是可吉可吉啊，10年後也還是可吉可吉。」那種很做自己的感覺，我覺得很棒。'},
+        {q:'台灣對青年友善嗎？',a:'我覺得台灣對青年是蠻友善的，包容度很高，尤其在藝文產業這塊可以看到很多青年非常活躍。比起日本那種一定要進入大企業上班的社會期待，台灣的流動性比較大。'},
+        {q:'你通常怎麼工作？',a:'我的工作模式蠻隨性的，看心情做事，有時候在家，有時候去咖啡廳。如果需要高度專注或是寫東西，在家比較能專心。'},
+        {q:'你的房間裡有沒有什麼對你很重要的物件？',a:'這台黃色電風扇，我是因為看日劇《凪的新生活》，女主角把電風扇漆成黃色象徵新生活開始，所以我才買了這台。'},
+        {q:'你是怎麼在台南建立社交圈的？',a:'我比較常跟朋友的朋友一起吃飯。假設我有兩個朋友，他們各自帶自己的朋友過來，有時候就會湊個10人左右一起吃圓桌菜。'},
+        {q:'你最喜歡的角色是什麼？',a:'Snoopy系列，尤其是Lucy和Olaf這些角色。我買杯子的心情是覺得日常生活一定會用到，不像廚具可能買了不常下廚，水杯不管是喝水、泡咖啡都很實用。'},
+        {q:'如果想像20年後的自己，你希望是什麼狀態？',a:'住在一個非都市的地方。我記得有一次去左鎮，看到平日白天街上沒什麼人、很安靜，那種一切都慢下來、不用趕時間的節奏讓我印象很深。在那樣的環境下發呆、閱讀、深呼吸，就是我理想中50歲的樣子。'}
+      ]
+    }
+  ],
+
+  cross: [
+    {
+      id:'007', name:'卡卡米', loc:'Taiwan · Taipei ↔ Japan · Tokushima', age:'28歲', job:'臨床心理研究生', initial:'卡',
+      slogan:'「台北的房間是霉味，日本的房間是木頭和陽光。」',
+      intro:'在台北與德島之間，他經歷著極端的空間感知。台北的房間對他而言，是曬不到太陽的封閉容器；跨越海洋來到日本，生活開始充滿陽光。跨國的移動是重新換盆行光合作用的遷徙。',
+      qa:[
+        {q:'台北跟日本德島，你分別用什麼顏色形容？',a:'台北是灰色，因為給我的感覺比較陰暗、潮濕。日本是黃色，給我一種明亮、樂觀、活潑一點的感覺。台北的房間真的很陰暗，而日本的房間日照很好，每天早上起床都有光線從兩個地方照進來，這是最大的差別。'},
+        {q:'台北的房間裡你最喜歡的聲音是什麼？',a:'下午睡午覺時，外面下雨的聲音。在一個封閉的空間裡聽著外面的雨聲，會有一種很安心的感覺。'},
+        {q:'日本的房間裡呢？',a:'早上的鳥叫聲。那是在台北完全沒有的東西。'},
+        {q:'你把大學的回憶都封存在台灣，沒有帶去日本，為什麼？',a:'因為那些東西代表的是那個時期的我。它們放在那個格子裡，就是我的大學生活。我覺得我把它封存、擺放在那個區域。大部分的東西我都沒有帶過來日本。'},
+        {q:'回到家第一件事是什麼？',a:'開電腦。這個習慣從台北就有了，回到家就是先開電腦，然後從電腦那裡繼續我的生活。'},
+        {q:'私下的你和公開的你有什麼不同？',a:'在房間裡絕對是私密的自己，就是那種可以穿著內褲到處跑，不用在意別人眼光的狀態。公開的自己就是會比較在意形象，會穿戴整齊，講話也會比較得體一點。'},
+        {q:'現在最大的煩惱是什麼？',a:'畢業後的出路。還有就是家人的壓力——主要是我阿嬤，她會一直問我有沒有女朋友，什麼時候要結婚。她不知道我是同志，所以每次回去都要面對這個問題。'},
+        {q:'困難的時候，什麼可以驅動你繼續前進？',a:'理想、報復、熱情。（笑）'},
+        {q:'台灣和日本對青年友善嗎？',a:'我覺得日本不友善。日本就是一個很會把人變成機器的地方，然後薪水又很低，物價又很高。我覺得台灣對青年比較友善一點點。'},
+        {q:'五年後或十年後，你的理想生活是什麼樣子？',a:'我希望那時候已經在日本定居，有一份穩定的工作，買了自己的房子。希望是有大落地窗、採光很好的房子。然後生活很規律，下班後可以去健身房，回家後可以放鬆地休息。'}
+      ]
+    }
+  ],
+
+  sapporo: [
+    {
+      id:'008', name:'晴香', loc:'Japan · Sapporo', age:'34歲', job:'HR / 社群經理', initial:'晴',
+      slogan:'「我不想離父母太近，也不想太遠——札幌剛好。」',
+      intro:'身處30世代中段，積極參與社群以抗拒孤獨。在故鄉召喚與個人自由間矛盾，認為札幌提供了與家鄉「不太近」的完美距離。',
+      qa:[
+        {q:'你為什麼選擇留在札幌，而不是回函館或去東京？',a:'我不想離父母太遠，像東京或大阪，也不想太近（笑）。札幌剛好，離函館有點距離，但又不會太遠。函館對我來說有點太鄉下了，工作機會沒那麼多，札幌比較像大城市，比較適合我。'},
+        {q:'你大概多久回一次老家？',a:'大概三個月一次，或是每一季回去一次。'},
+        {q:'你理想的生活空間是什麼樣子？',a:'我希望房間非常乾淨，空氣很好，非常寬敞、不擁擠。就是白色或單一色調，讓人覺得有呼吸的空間。我現在的家東西有點太多了。'},
+        {q:'你同時身兼兩份工作，這是你想要的狀態嗎？',a:'其實在廣告代理商的第一份工作之後，我很想幫助同事能健康地工作，所以才決定轉職成為人資。現在同時在幼兒園做HR和在Ezofrogs幫忙，是我喜歡的兼顧方式。'},
+        {q:'去東京再回到北海道，最大的差異是什麼？',a:'東京工作幾年後，我決定辭職回北海道。現在大多是遠端工作。我覺得回來之後生活節奏不一樣了，可以更按照自己的步調。'},
+        {q:'你怎麼看日本社會對青年的態度？',a:'我覺得日本對於正在努力的年輕人，或是選擇稍微偏離正軌的人來說，很難說給了足夠的空間或容許失敗。但在個人或小型社群之間，確實還是有溫柔與扶持存在。'},
+        {q:'你有沒有一個讓自己切換狀態的儀式？',a:'我其實有透過一些小儀式切換狀態。每天一回到家就立刻洗手，這像是一個開關，告訴自己現在要開始在房間裡休息了。'},
+        {q:'你覺得孤獨是你生命裡的什麼？',a:'積極參與社群對我來說是抵抗孤獨的方式。在Ezofrogs和社群裡跟人連結，讓我覺得我不是一個人面對這些事情。'},
+        {q:'你父母現在還在函館嗎？他們希望你回去嗎？',a:'他們其實希望我回函館。但我不想離他們太遠，也不想太近（笑）。這個距離是我認真思考過的。'},
+        {q:'在這個年紀，你覺得自己最想要掌握的是什麼？',a:'是生活的節奏。我想要能夠自己決定什麼時候工作、什麼時候休息，而不是完全被工作的時間表控制。這也是我當初決定轉職的原因之一。'}
+      ]
+    },
+    {
+      id:'009', name:'真衣', loc:'Japan · Sapporo', age:'26歲', job:'公營事業上班族', initial:'衣',
+      slogan:'「關上門，褪去那件社會期待的衣服，才是真正的我。」',
+      intro:'職場上是被長輩包圍的青年，她始終在尋找一個能真正喘息的角落。關上房門，褪去社會期許的精緻外殼，香氣的轉換是她將社會模式切換回自我的魔法。',
+      qa:[
+        {q:'你在外面的你和在房間裡的你，有什麼不同？',a:'會有很大的反差。在外面我會想要打扮得很時尚，符合社會對年輕女性的期待；但在房間裡，我會把那些衣服脫掉，換上放鬆的衣服。這像是一種開關，切換「面對社會」和「真實自我」的狀態。'},
+        {q:'你在房間裡最喜歡的聲音是什麼？',a:'我喜歡電視的聲音，特別是播放英語節目的時候。因為我聽不太懂英語，所以它對我來說就像是一種背景音樂，讓房間有人聲，感覺比較舒服、放鬆。'},
+        {q:'你來自農村，現在在札幌工作，這個移動對你來說意味著什麼？',a:'壓力從一種轉變成另一種。在家鄉的時候，感覺每個人都在看著我，在關注我會考去哪裡、表現如何。到了東京唸大學後，那種被凝視的壓力消失了，但取而代之的是一種疏離感與孤獨感。'},
+        {q:'你覺得北海道對年輕人友善嗎？',a:'這是一個很難的問題。在東京，店員和客人通常都是年輕人，不會感到不自在。但在北海道，很多店員都是長輩。有時候大白天去咖啡廳，如果店員是長輩，我會感覺到一種視線，好像在說「妳為什麼在這裡？妳應該去工作啊。」'},
+        {q:'工作上最辛苦的地方是什麼？',a:'就是一種世代隔閡。我的團隊只有5個人，但其他同事都是60幾歲甚至70幾歲的長輩，我是最年輕的。他們的想法和做事方式跟我們這一代很不一樣，溝通上有時候真的很難。'},
+        {q:'你在家裡會做菜嗎？',a:'我會做菜，常做義大利麵或玉子燒。必備的是高湯，通常是用鰹魚或昆布做的。雖然正統做法要自己熬，但我沒時間，所以都用買來的高湯粉。我常做日式醬油口味的義大利麵。'},
+        {q:'你會感到孤獨嗎？',a:'會的。雖然現在比在東京時好多了，但有時候還是會覺得寂寞。特別是當只能透過手機傳訊息的時候。我不喜歡只看文字，我更重視面對面的交流，看著對方的眼睛說話讓我感到比較安心。'},
+        {q:'你對未來的理想生活有什麼想像？',a:'我想要住在一個被自然環繞的地方。如果有機會，我想住在看得到山和樹的房子裡，過著更安靜的生活。如果是跟家人或未來的伴侶一起住就更好了。'},
+        {q:'你最近在學什麼？',a:'我現在很喜歡「為了自己」而學習。最近對食物文化，或是人際關係與食物的連結很有興趣。如果有機會，未來也許會想從事更多關於人與食物連結的工作。'},
+        {q:'你在最近買的書是關於什麼的？',a:'是關於行銷的書，探討人們購買背後的動機——不是因為便宜，而是因為背後的「故事」或與生產者的「連結」。這跟我現在推廣農業的工作很有關係，我想了解怎麼建立這種連結。'}
+      ]
+    },
+    {
+      id:'010', name:'新世', loc:'Japan · Sapporo', age:'24歲', job:'人資業務', initial:'新',
+      slogan:'「早上七點，CD準時叫醒我。這是我給自己的紀律。」',
+      intro:'別人的房間是避風港，他的房間是修行室。早上七點，設定好的CD會準時用音樂將他喚醒；天氣晴朗的日子，推開窗讓冷空氣替房間與身心重置。',
+      qa:[
+        {q:'你的房間對你來說是什麼樣的空間？',a:'是一個自我修煉的地方。我每天早上七點設定好CD叫我起床，然後用健身器材重置身體。我在這裡閱讀、設定目標、寫五年日記。這不只是睡覺的地方，是我讓自己變好的地方。'},
+        {q:'你為什麼幾乎都穿黑色的衣服？',a:'我有兩個原因。第一，我喜歡黑色和白色，學生時期就習慣每天穿白襯衫黑褲子。第二，我們公司的代表色就是黑與白，所以我穿黑色。'},
+        {q:'你房間裡最喜歡的角落是哪裡？',a:'這裡。（指著貼滿目標的牆面和書桌）這是我的願景，這是我今年的目標，這是學習日文、數學、英文的計畫。這裡光線很好，是我最喜歡的地方。'},
+        {q:'你會怎麼形容你和女生交往的動機？',a:'我那時候買健身器材，是為了想讓身材變好，看能不能因此更有自信，然後可以跟女生約會（笑）。所以我買了這個，然後看YouTube上的男生教學影片學怎麼做。'},
+        {q:'你的書是怎麼挑選的？',a:'去年在員工未來計畫發表會上拿到前三名，獲得了三萬日圓，我就拿來買關於基礎學力或知識的書。我對人們的職涯和生活方式很好奇，所以晚上會讀這類書。'},
+        {q:'你現在最感興趣的主題是什麼？',a:'關於人生。比如《如何在美國成功》，作者曾在美國當大學生，採訪了比爾蓋茲等名人。我對人們的職涯和生活方式很好奇，想知道活得很精采的人是怎麼走到那裡的。'},
+        {q:'你的五年日記寫了些什麼？',a:'從2025年開始寫，剛寫完第一年。雖然有時候會偷懶沒寫，但我會看行事曆把它補上去。我覺得這很有幫助，可以看到自己的成長和改變。'},
+        {q:'你吃飯的選擇標準是什麼？',a:'我以前在燒肉店打工，所以對食物很有感覺。但平日的選擇比較實際，早餐吃冰箱裡的東西，晚餐吃媽媽做的。午餐如果是外帶，我會選比較便宜的、能讓我把錢省下來買書的。'},
+        {q:'你覺得台灣怎麼樣？',a:'我看過一些台灣的影片，感覺是一個很有活力的地方。食物好吃，人們看起來很有個性。我有一天想去台灣看看。'},
+        {q:'你對未來有什麼想像？',a:'我想成為一個很有影響力的人。不一定是有名，但是是那種當你在困難的時候，你會想到他說過的話，然後得到力量的那種人。我覺得這比賺很多錢更重要。'}
+      ]
+    }
+  ],
+
+  tokyo: [
+    {
+      id:'011', name:'優香', loc:'Japan · Tokyo', age:'20歲', job:'教育新創營運長', initial:'香',
+      slogan:'「回到家，洗手，然後我才是我自己。」',
+      intro:'白天在澀谷經營著事業，肩負推動教育變革的社會重量；夜晚回到家，以洗手作為儀式洗去外界的喧鬧，切換回20歲少女日常。',
+      qa:[
+        {q:'你每天回到家的第一件事是什麼？',a:'我一回到家就會立刻洗手，這對我來說就像是一個開關，告訴自己：好，現在要開始在房間裡休息了。'},
+        {q:'你的房間對你有什麼功能？',a:'我會在房間準備咖啡，還有一些我很喜歡的小物，像是書籤、毯子。這些東西營造出的氛圍，能彌補我腦袋容易分心的缺點，幫助我保持專注與平靜。'},
+        {q:'你現在住的地方讓你感覺如何？',a:'我現在住的地方附近有很多綠地，視野很好，甚至能遠眺摩天大樓。雖然不擁擠，但非常平靜。身為一個自由職業者，在這種安靜的環境下工作或讀書，我覺得非常舒服。'},
+        {q:'你怎麼在壓力大的時候放鬆？',a:'我其實不太去電影院。當我感到非常疲累時，通常會去咖啡廳坐坐，或是自己在家下廚。比起去餐廳，料理的過程對我來說更像是一種休息。'},
+        {q:'你對照片記錄有什麼看法？',a:'我覺得拍照記錄的是當下的感受。像是我特別鍾愛自己房間的牆紙——淡紫色底纹上繪有天鵝與水草的圖案。我拍下它，是因為那是我認識自己的一個角落。'},
+        {q:'你的房間裡有沒有什麼「本想放置卻因故未能擺放的空間」？',a:'原本打算鋪瑜伽垫的地板。因為空間狹窄，最終發現放在通道會礙事，便一直保持原狀。那個空缺一直在那裡，有時候反而讓我想著它應該有什麼。'},
+        {q:'20歲同時準備大學考試和經營公司，你怎麼理解自己現在的狀態？',a:'我在準備大學入學考試，同時也在經營公司。有時候我不太確定我現在到底是個學生，還是一個創業者，還是其實我只是一個想要好好睡覺的普通人。'},
+        {q:'你有沒有一個方式把「工作的你」跟「休息的你」切開來？',a:'洗手是一個，還有咖啡。當我泡咖啡的時候，我是在告訴自己現在開始是不同的狀態。那個儀式感對我來說很重要。'},
+        {q:'有感受到這個年紀的社會壓力嗎？',a:'我能感覺到大人們散發出一種氛圍，認為我「差不多該決定將來了」、「該做出成果了」。但我也同時覺得，我現在已經在做出成果了，只是那個成果不一定是大人們能看見的樣子。'},
+        {q:'如果可以，你希望把房間變成什麼樣子？',a:'希望有更多空間可以喘息。不一定要很大，但要讓人覺得這個空間是屬於我的，而不只是我住在這裡。'}
+      ]
+    },
+    {
+      id:'012', name:'穂香', loc:'Japan · Tokyo', age:'20歲', job:'大三生與社會倡議者', initial:'穂',
+      slogan:'「真正獨處的時候，我不需要扮演任何人。那是重要的孤獨。」',
+      intro:'從外地到東京來唸書，在由父母提供、混雜著原生家庭牽絆與個人美學的房間裡，展開屬於她的東京生活。',
+      qa:[
+        {q:'早上起床打開窗戶的時候，你是什麼心情？',a:'眼睛自然就會醒過來。當感受到溫暖的陽光時，心情也會跟著暖和起來，會產生一種「今天也要努力過好這一天」的動力。'},
+        {q:'你在真正獨處的時候，最強烈的感受是什麼？',a:'最強烈的感受是混合了寧靜與安心的情緒。雖然寂寞感並非完全為零，但更多的是一種「不需要扮演任何人」的解放感。這是不得不誠實面對自己情感與思考的時間，我覺得這對我來說是很重要的孤獨。'},
+        {q:'你在房間裡最喜歡什麼時刻？',a:'坐在那張可以調整傾斜度的椅子上讀書，對我來說是最棒的時光。我會一邊喝著印度香料奶茶，一邊享受閱讀的樂趣。'},
+        {q:'如果分別用顏色形容現在的東京和你的人生，你會選什麼？',a:'如果要用顏色形容現在的東京，是「帶灰的藍色」。它既有都會的洗鍊與速度感，但也包含了某種冷漠與緊張感。另一方面，我現在的人生則是「淡米色混入一點點粉紅」。雖然還沒有完全定型，但正在慢慢培養出自我風格。'},
+        {q:'聽到「人生」這個詞，你腦海中浮現什麼畫面？',a:'一個人在漫長道路上行走的背影。雖然看不見遠方，但那種「持續走著」的感覺非常強烈。'},
+        {q:'聽到「理想生活」呢？',a:'自己在有光線灑落的安靜房間裡，讀書或工作。我認為在忙碌之中，仍能保有自己的步調與留白，就是理想的狀態。'},
+        {q:'在這個年紀，你感受到社會對你的期待嗎？',a:'確實感受到了。我能感覺到社會或大人們散發出一種氛圍，認為我「差不多該決定將來了」。但我內心強烈希望能停下來繼續思考。想回應期待的心情，與想守護自己步調的心情，這兩者之間的搖擺，就是我現在真實的狀態。'},
+        {q:'你的房間對你來說是私密的地方嗎？',a:'是非常私密的空間。通常只有關係最親密的人我才會讓他們進來。如果是要和一般朋友見面或聚會，我幾乎都會選擇去外面的地方。'},
+        {q:'你戴上手鍊或手錶出門，有什麼切換感嗎？',a:'無論是戴上智慧手錶還是飾品，都會讓我有種「該繃緊神經了」的感覺。我通常是在出門前一刻才會戴上，這幾乎已經變成一種習慣了。智慧手錶能讓我了解自己的身體狀況，而飾品則像護身符一樣，這兩者幫助我保持身心的平衡。'},
+        {q:'五年或十年後，你希望自己是什麼樣的人？',a:'我希望自己能透過研究與工作，持續思考「孩子與家庭的樣貌」，並將這些想法化為語言傳遞給社會。雖然生活可能會很忙碌，但我希望仍是一個能確保留在房裡讀書的時間、擁有獨自思考留白的人。'}
+      ]
+    }
+  ]
+
+};
+
+// RENDER
+function renderGrid(gridId, arr){
+  const g = document.getElementById(gridId);
+  if(!g) return;
+  arr.forEach((p,i)=>{
+    const c = document.createElement('div');
+    c.className='card';
+    c.style.transitionDelay=`${i*0.05}s`;
+    c.innerHTML=`
+      <span class="card-num">No. ${p.id}</span>
+      <div class="card-av">${p.initial}</div>
+      <h3 class="card-name">${p.name}</h3>
+      <p class="card-meta">${p.age} · ${p.job}</p>
+      <p class="card-loc">${p.loc}</p>
+      <p class="card-slogan">${p.slogan}</p>
+      <span class="card-read">閱讀逐字稿 →</span>`;
+    c.addEventListener('click',()=>openModal(p));
+    g.appendChild(c);
+  });
+}
+
+renderGrid('taipei-grid', people.taipei);
+renderGrid('taoyuan-grid', people.taoyuan);
+renderGrid('tainan-grid', people.tainan);
+renderGrid('cross-grid', people.cross);
+renderGrid('sapporo-grid', people.sapporo);
+renderGrid('tokyo-grid', people.tokyo);
+
+// MODAL
+const overlay=document.getElementById('overlay');
+const mclose=document.getElementById('mclose');
+
+function openModal(p){
+  document.getElementById('mnum').textContent=`受訪者 No. ${p.id} · ${p.loc}`;
+  document.getElementById('mname').textContent=p.name;
+  document.getElementById('mbio').textContent=`${p.age} · ${p.job}`;
+  document.getElementById('mslogan').textContent=p.slogan;
+  document.getElementById('mintro').textContent=p.intro;
+  document.getElementById('mtranscript').innerHTML=p.qa.map(q=>`
+    <div class="qa">
+      <p class="qq">Q：${q.q}</p>
+      <p class="qa-a">${q.a}</p>
+    </div>`).join('');
+  overlay.classList.add('on');
+  document.body.style.overflow='hidden';
+  document.getElementById('modal').scrollTop=0;
+}
+function closeModal(){
+  overlay.classList.remove('on');
+  document.body.style.overflow='';
+}
+mclose.addEventListener('click',closeModal);
+overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+// REVEAL
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:0.06});
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+</script>
+
+</body>
+</html>
