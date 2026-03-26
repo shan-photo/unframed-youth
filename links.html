@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>青春框景 · Unframed Youth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500&family=IM+Fell+English:ital@0;1&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --dark: #1C1A17;
+    --mid: #4A453C;
+    --light: #9A9186;
+    --accent: #8B6F47;
+    --accent-light: #C4A882;
+    --paper: #EDE8DF;
+    --line: rgba(74,69,60,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.5;
+  }
+
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+    position: relative;
+  }
+
+  /* ── header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .eyebrow {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    text-transform: lowercase;
+    margin-bottom: 1rem;
+  }
+
+  .title-zh {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 300;
+    font-size: 2.6rem;
+    color: var(--dark);
+    line-height: 1.2;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.3rem;
+  }
+
+  .title-en {
+    font-family: 'IM Fell English', serif;
+    font-size: 1rem;
+    color: var(--light);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 1.6rem;
+  }
+  .divider-line { flex: 1; max-width: 60px; height: 0.5px; background: var(--accent-light); }
+  .divider-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+
+  .tagline {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.9;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── stats row ── */
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 3rem;
+    border: 0.5px solid var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .stat {
+    flex: 1;
+    padding: 1rem 0;
+    text-align: center;
+    border-right: 0.5px solid var(--line);
+  }
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'IM Fell English', serif;
+    font-size: 1.5rem;
+    color: var(--dark);
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    color: var(--light);
+    letter-spacing: 0.12em;
+  }
+
+  /* ── links ── */
+  .links { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .link-card {
+    display: block;
+    text-decoration: none;
+    background: var(--paper);
+    border: 0.5px solid var(--line);
+    border-radius: 2px;
+    padding: 1.25rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    cursor: pointer;
+  }
+
+  .link-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+  }
+
+  .link-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(28,26,23,0.08);
+    border-color: rgba(139,111,71,0.3);
+  }
+
+  .link-card:hover::before { transform: scaleY(1); }
+
+  .link-card:nth-child(1) { animation: fadeUp 0.7s 0.2s ease both; }
+  .link-card:nth-child(2) { animation: fadeUp 0.7s 0.32s ease both; }
+  .link-card:nth-child(3) { animation: fadeUp 0.7s 0.44s ease both; }
+
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-badge {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(139,111,71,0.1);
+    padding: 3px 8px;
+    border-radius: 1px;
+    font-family: 'IM Fell English', serif;
+  }
+
+  .card-arrow {
+    color: var(--accent-light);
+    font-size: 14px;
+    transition: transform 0.25s ease, color 0.25s ease;
+  }
+  .link-card:hover .card-arrow {
+    transform: translate(3px, -3px);
+    color: var(--accent);
+  }
+
+  .card-title {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--dark);
+    margin-bottom: 0.35rem;
+    letter-spacing: 0.05em;
+  }
+
+  .card-desc {
+    font-size: 12px;
+    color: var(--light);
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── featured card (main site) ── */
+  .link-card.featured {
+    background: var(--dark);
+    border-color: var(--dark);
+  }
+  .link-card.featured::before { background: var(--accent-light); }
+  .link-card.featured .card-badge {
+    color: var(--accent-light);
+    background: rgba(196,168,130,0.15);
+  }
+  .link-card.featured .card-title { color: var(--cream); }
+  .link-card.featured .card-desc { color: var(--light); }
+  .link-card.featured .card-arrow { color: rgba(196,168,130,0.5); }
+  .link-card.featured:hover .card-arrow { color: var(--accent-light); }
+  .link-card.featured:hover {
+    box-shadow: 0 8px 32px rgba(28,26,23,0.25);
+    border-color: var(--dark);
+  }
+
+  /* ── footer ── */
+  .footer {
+    margin-top: 3rem;
+    text-align: center;
+    animation: fadeUp 0.8s 0.6s ease both;
+  }
+
+  .footer-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+  .footer-divider-line { flex: 1; height: 0.5px; background: var(--line); }
+
+  .curator-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 0.6rem;
+  }
+
+  .curator-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 13px;
+    color: var(--cream);
+    letter-spacing: 0;
+  }
+
+  .curator-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 13px;
+    color: var(--mid);
+    letter-spacing: 0.08em;
+  }
+
+  .credits {
+    font-size: 10px;
+    color: var(--light);
+    line-height: 2;
+    letter-spacing: 0.06em;
+  }
+
+  .copy {
+    margin-top: 1.5rem;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 11px;
+    color: rgba(154,145,134,0.6);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 400px) {
+    .title-zh { font-size: 2.1rem; }
+    .container { padding: 2.5rem 1.2rem 3.5rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="header">
+    <p class="eyebrow">田野調查與攝影展 · 2025—2026</p>
+    <h1 class="title-zh">青春框景</h1>
+    <p class="title-en">Unframed Youth</p>
+    <div class="divider">
+      <span class="divider-line"></span>
+      <span class="divider-dot"></span>
+      <span class="divider-line"></span>
+    </div>
+    <p class="tagline">橫跨臺日雙地<br>12 位 20–35 歲青年的房間影像與對話手札</p>
+  </header>
+
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-num">12</span>
+      <span class="stat-label">受訪者</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">2</span>
+      <span class="stat-label">國家</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">5</span>
+      <span class="stat-label">城市</span>
+    </div>
+  </div>
+
+  <div class="links">
+
+    <a class="link-card featured" href="https://shan-photo.github.io/unframed-youth/" target="_blank" rel="noopener">
+      <div class="card-top">
+        <span class="card-badge">展覽網站</span>
+        <span class="card-arrow">↗</span>
+      </div>
+      <p class="card-title">進入展覽 · 閱讀 12 個房間</p>
+      <p class="card-desc">訪談全文、房間影像，以及策展人的田野手記</p>
+    </a>
+
+    <a class="link-card" href="https://www.accupass.com/go/Unframed" target="_blank" rel="noopener">
+      <div class="card-top">
+        <span class="card-badge">實體展覽</span>
+        <span class="card-arrow">↗</span>
+      </div>
+      <p class="card-title">台北場活動報名</p>
+      <p class="card-desc">查看展出日期、地點與入場資訊</p>
+    </a>
+
+    <a class="link-card" href="https://forms.gle/aegs64M9VSPhnn7X7" target="_blank" rel="noopener">
+      <div class="card-top">
+        <span class="card-badge">預約導覽</span>
+        <span class="card-arrow">↗</span>
+      </div>
+      <p class="card-title">策展人親導 · 限定 5 人場次</p>
+      <p class="card-desc">佩珊親自帶你走過田野旅程，約 20 分鐘</p>
+    </a>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-divider">
+      <span class="footer-divider-line"></span>
+      <span class="footer-divider-line"></span>
+    </div>
+    <div class="curator-row">
+      <div class="curator-avatar">珊</div>
+      <span class="curator-name">策展攝影 · 吳佩珊</span>
+    </div>
+    <p class="credits">
+      指導老師｜朱軒術<br>
+      指導單位｜教育部青年發展署（青年百傑海外圓夢計劃）<br>
+      合作單位｜Willdoor · Ezofrogs
+    </p>
+    <p class="copy">© 2026 Unframed Youth · 青春框景</p>
+  </footer>
+
+</div>
+</body>
+</html>
